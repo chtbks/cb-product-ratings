@@ -420,11 +420,42 @@
   flex-direction: column;
 }
 
+.custom-reviewer-name-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
 .custom-reviewer-name {
   font-weight: 600;
   color: #666666; /* Medium gray like the site */
   font-size: 0.9rem;
-  margin-bottom: 4px;
+}
+
+.custom-verified-purchase {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #52DBC1;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.custom-verified-text {
+  color: #52DBC1;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.custom-verified-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: #52DBC1;
+  border-radius: 50%;
 }
 
 .unselectable {

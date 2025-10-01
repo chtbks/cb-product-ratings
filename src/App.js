@@ -331,9 +331,32 @@ function App() {
                   
                   <div className="custom-reviewer">
                     <div className="custom-reviewer-details">
-                      <span className="custom-reviewer-name unselectable" title={rating['Public Name'] || 'Anonymous'}>
-                        {rating['Public Name'] || 'Anonymous'}
-                      </span>
+                      <div className="custom-reviewer-name-container">
+                        <span className="custom-reviewer-name unselectable" title={rating['Public Name'] || 'Anonymous'}>
+                          {rating['Public Name'] || 'Anonymous'}
+                        </span>
+                        {(() => {
+                          try {
+                            const urlParams = rating['URL Params'];
+                            if (urlParams) {
+                              const parsedParams = JSON.parse(urlParams);
+                              return parsedParams.order_id && (
+                                <span className="custom-verified-purchase">
+                                  <span className="custom-verified-text">Verified Purchase</span>
+                                  <span className="custom-verified-icon">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M10 3L4.5 8.5L2 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                  </span>
+                                </span>
+                              );
+                            }
+                          } catch (e) {
+                            // If JSON parsing fails, don't show the tag
+                          }
+                          return null;
+                        })()}
+                      </div>
                     </div>
                   </div>
                   
