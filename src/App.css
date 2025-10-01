@@ -455,13 +455,13 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #52DBC1;
+  color: #155B9B;
   font-size: 0.75rem;
   font-weight: 500;
 }
 
 .custom-verified-text {
-  color: #52DBC1;
+  color: #155B9B;
   font-size: 0.75rem;
   font-weight: 500;
 }
@@ -472,7 +472,7 @@
   justify-content: center;
   width: 14px;
   height: 14px;
-  background-color: #52DBC1;
+  background-color: #155B9B;
   border-radius: 50%;
 }
 
@@ -864,7 +864,7 @@
 .custom-recommend-percentage-inline {
   font-size: 2rem;
   font-weight: 700;
-  color: #52DBC1;
+  color: #24B69A;
   line-height: 1;
 }
 
@@ -885,7 +885,7 @@
 .custom-purchase-again-percentage-inline {
   font-size: 2rem;
   font-weight: 700;
-  color: #0066cc;
+  color: #24B69A;
   line-height: 1;
 }
 
@@ -1043,25 +1043,25 @@
 
 .pagination-btn:hover {
   background: #f8f9fa;
-  border-color: #52DBC1;
-  color: #52DBC1;
+  border-color: #24B69A;
+  color: #24B69A;
 }
 
 .pagination-btn:focus {
-  outline: 2px solid #52DBC1;
+  outline: 2px solid #24B69A;
   outline-offset: 2px;
 }
 
 .pagination-btn.pagination-active {
-  background: #52DBC1;
+  background: #24B69A;
   color: white;
-  border-color: #52DBC1;
+  border-color: #24B69A;
   font-weight: 600;
 }
 
 .pagination-btn.pagination-active:hover {
-  background: #45C4A8;
-  border-color: #45C4A8;
+  background: #24B69A;
+  border-color: #24B69A;
 }
 
 .pagination-prev,
