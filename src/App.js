@@ -15,6 +15,8 @@ function App() {
   });
   const [showDistributionTooltip, setShowDistributionTooltip] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [reviewsPerPage] = useState(10);
 
   // Global dropdown handler
   const toggleDropdown = () => {
@@ -24,6 +26,26 @@ function App() {
   const selectRating = (rating) => {
     setRatingFilter(rating);
     setDropdownOpen(false);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
+
+  // Pagination logic
+  const getCurrentPageReviews = () => {
+    const startIndex = (currentPage - 1) * reviewsPerPage;
+    const endIndex = startIndex + reviewsPerPage;
+    return filteredRatings.slice(startIndex, endIndex);
+  };
+
+  const totalPages = Math.ceil(filteredRatings.length / reviewsPerPage);
+  const hasMorePages = currentPage < totalPages;
+  const currentReviews = getCurrentPageReviews();
+
+  const loadMoreReviews = () => {
+    setCurrentPage(prev => prev + 1);
+  };
+
+  const resetPagination = () => {
+    setCurrentPage(1);
   };
 
   useEffect(() => {
@@ -104,6 +126,7 @@ function App() {
     }
 
     setFilteredRatings(filtered);
+    setCurrentPage(1); // Reset to first page when filtering
   }, [ratings, searchTerm, ratingFilter]);
 
   const renderStars = (rating) => {
@@ -304,12 +327,15 @@ function App() {
         <div className="custom-review-border-smooth"></div>
         
         <div className="results-info" style={{ margin: '20px 0', color: '#666', fontSize: '0.9rem' }}>
-          Showing {filteredRatings.length} of {ratings.length} reviews
+          Showing {currentReviews.length} of {filteredRatings.length} reviews
+          {filteredRatings.length > reviewsPerPage && (
+            <span> (Page {currentPage} of {totalPages})</span>
+          )}
         </div>
         
         <div className="custom-reviews-container">
           <div className="custom-reviews-list">
-            {filteredRatings.map((rating, index) => (
+            {currentReviews.map((rating, index) => (
               <div key={rating.ID || index} className="custom-review">
                 <div className="custom-review-center-panel">
                   <div className="custom-review-rating-title">
@@ -373,6 +399,89 @@ function App() {
             ))}
           </div>
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="pagination-controls" style={{ 
+            textAlign: 'center', 
+            margin: '30px 0',
+            padding: '20px 0'
+          }}>
+            <div className="pagination-nav">
+              {/* Previous button */}
+              {currentPage > 1 && (
+                <button 
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className="pagination-btn pagination-prev"
+                  aria-label="Previous page"
+                >
+                  ← Previous
+                </button>
+              )}
+              
+              {/* Page numbers */}
+              <div className="pagination-numbers">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => {
+                  // Show first page, last page, current page, and pages around current
+                  const showPage = 
+                    pageNum === 1 || 
+                    pageNum === totalPages || 
+                    (pageNum >= currentPage - 1 && pageNum <= currentPage + 1);
+                  
+                  if (!showPage) {
+                    // Show ellipsis for gaps
+                    if (pageNum === 2 && currentPage > 3) {
+                      return <span key={`ellipsis-${pageNum}`} className="pagination-ellipsis">...</span>;
+                    }
+                    if (pageNum === totalPages - 1 && currentPage < totalPages - 2) {
+                      return <span key={`ellipsis-${pageNum}`} className="pagination-ellipsis">...</span>;
+                    }
+                    return null;
+                  }
+                  
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => setCurrentPage(pageNum)}
+                      className={`pagination-btn pagination-number ${
+                        currentPage === pageNum ? 'pagination-active' : ''
+                      }`}
+                      aria-label={`Go to page ${pageNum}`}
+                      aria-current={currentPage === pageNum ? 'page' : undefined}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+              </div>
+              
+              {/* Next button */}
+              {currentPage < totalPages && (
+                <button 
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className="pagination-btn pagination-next"
+                  aria-label="Next page"
+                >
+                  Next →
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Pagination Info */}
+        {filteredRatings.length > reviewsPerPage && (
+          <div className="pagination-info" style={{ 
+            textAlign: 'center', 
+            margin: '20px 0',
+            color: '#666',
+            fontSize: '0.9rem'
+          }}>
+            <span>
+              Showing {Math.min(currentPage * reviewsPerPage, filteredRatings.length)} of {filteredRatings.length} reviews
+            </span>
+          </div>
+        )}
 
         {filteredRatings.length === 0 && (
           <div className="no-results">
