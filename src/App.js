@@ -262,7 +262,7 @@ function App() {
   return (
     <div className="app">
       <div className="reviews-section-wrapper">
-        <div className="reviews-title">Take it from our community...</div>
+        <div className="reviews-title">Customer Reviews</div>
         
         <div className="custom-widget-container">
           <div className="custom-main-layout">
@@ -319,84 +319,38 @@ function App() {
                   </div>
                   
                   {/* Analytics - Same Line */}
-                  <div className="custom-analytics-inline-container">
-                     {/* Recommend Friend Analytics */}
-                     {stats.recommendFriendStats.totalResponses > 0 && (
-                       <div className="custom-recommend-analytics-inline">
-                         <div className="custom-recommend-circle">
-                           <svg className="custom-recommend-progress-ring" width="60" height="60">
-                             <circle
-                               className="custom-recommend-progress-ring-background"
-                               cx="30"
-                               cy="30"
-                               r="26"
-                               fill="none"
-                               stroke="#e3e3e3"
-                               strokeWidth="6"
-                             />
-                             <circle
-                               className="custom-recommend-progress-ring-fill"
-                               cx="30"
-                               cy="30"
-                               r="26"
-                               fill="none"
-                               stroke="#52DBC1"
-                               strokeWidth="6"
-                               strokeDasharray={`${2 * Math.PI * 26}`}
-                               strokeDashoffset={`${2 * Math.PI * 26 * (1 - stats.recommendFriendStats.recommendRate / 100)}`}
-                               strokeLinecap="round"
-                               transform="rotate(-90 30 30)"
-                             />
-                           </svg>
-                           <span className="custom-recommend-percentage-inline">{Math.round(stats.recommendFriendStats.recommendRate)}%</span>
-                         </div>
-                         <div className="custom-recommend-text">
-                           <div className="custom-recommend-label-inline">would recommend</div>
-                           <div className="custom-recommend-count-inline">
-                             {stats.recommendFriendStats.recommendCount || Math.round((stats.recommendFriendStats.recommendRate / 100) * stats.recommendFriendStats.totalResponses)} of {stats.recommendFriendStats.totalResponses}
+                  <div className="custom-analytics-section-container">
+                    <div className="custom-analytics-inline-container">
+                       {/* Recommend Friend Analytics */}
+                       {stats.recommendFriendStats.totalResponses > 0 && (
+                         <div className="custom-recommend-analytics-inline">
+                           <div className="custom-recommend-percentage-text">
+                             <span className="custom-recommend-percentage-inline">{Math.round(stats.recommendFriendStats.recommendRate)}%</span>
+                           </div>
+                           <div className="custom-recommend-text">
+                             <div className="custom-recommend-label-inline">would recommend</div>
+                             <div className="custom-recommend-count-inline">
+                               {stats.recommendFriendStats.recommendCount || Math.round((stats.recommendFriendStats.recommendRate / 100) * stats.recommendFriendStats.totalResponses)} of {stats.recommendFriendStats.totalResponses}
+                             </div>
                            </div>
                          </div>
-                       </div>
-                     )}
-                     
-                     {/* Purchase Again Analytics */}
-                     {stats.purchaseAgainStats.totalResponses > 0 && (
-                       <div className="custom-purchase-again-analytics-inline">
-                         <div className="custom-purchase-again-circle">
-                           <svg className="custom-purchase-again-progress-ring" width="60" height="60">
-                             <circle
-                               className="custom-purchase-again-progress-ring-background"
-                               cx="30"
-                               cy="30"
-                               r="26"
-                               fill="none"
-                               stroke="#e3e3e3"
-                               strokeWidth="6"
-                             />
-                             <circle
-                               className="custom-purchase-again-progress-ring-fill"
-                               cx="30"
-                               cy="30"
-                               r="26"
-                               fill="none"
-                               stroke="#0066cc"
-                               strokeWidth="6"
-                               strokeDasharray={`${2 * Math.PI * 26}`}
-                               strokeDashoffset={`${2 * Math.PI * 26 * (1 - stats.purchaseAgainStats.purchaseAgainRate / 100)}`}
-                               strokeLinecap="round"
-                               transform="rotate(-90 30 30)"
-                             />
-                           </svg>
-                           <span className="custom-purchase-again-percentage-inline">{Math.round(stats.purchaseAgainStats.purchaseAgainRate)}%</span>
-                         </div>
-                         <div className="custom-purchase-again-text">
-                           <div className="custom-purchase-again-label-inline">would purchase again</div>
-                           <div className="custom-purchase-again-count-inline">
-                             {stats.purchaseAgainStats.purchaseAgainCount || Math.round((stats.purchaseAgainStats.purchaseAgainRate / 100) * stats.purchaseAgainStats.totalResponses)} of {stats.purchaseAgainStats.totalResponses}
+                       )}
+                       
+                       {/* Purchase Again Analytics */}
+                       {stats.purchaseAgainStats.totalResponses > 0 && (
+                         <div className="custom-purchase-again-analytics-inline">
+                           <div className="custom-purchase-again-percentage-text">
+                             <span className="custom-purchase-again-percentage-inline">{Math.round(stats.purchaseAgainStats.purchaseAgainRate)}%</span>
+                           </div>
+                           <div className="custom-purchase-again-text">
+                             <div className="custom-purchase-again-label-inline">would purchase again</div>
+                             <div className="custom-purchase-again-count-inline">
+                               {stats.purchaseAgainStats.purchaseAgainCount || Math.round((stats.purchaseAgainStats.purchaseAgainRate / 100) * stats.purchaseAgainStats.totalResponses)} of {stats.purchaseAgainStats.totalResponses}
+                             </div>
                            </div>
                          </div>
-                       </div>
-                     )}
+                       )}
+                    </div>
                   </div>
                 </div>
               </div>
