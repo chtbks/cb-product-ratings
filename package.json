@@ -9,13 +9,16 @@
     "build:widget": "webpack --config webpack.widget.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "react-scripts start"
+    "dev": "react-scripts start",
+    "api:example": "node api-example.js"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "papaparse": "^5.4.1"
+    "papaparse": "^5.4.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "@types/papaparse": "^5.3.14",

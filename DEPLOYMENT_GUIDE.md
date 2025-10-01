@@ -321,6 +321,24 @@ window.ChatbooksRatings.init({
 
 ---
 
+## 🔄 API Migration
+
+**Planning to move from CSV to API?** See our comprehensive migration guide:
+
+📖 **[API_MIGRATION_GUIDE.md](./API_MIGRATION_GUIDE.md)** - Complete guide for transitioning to API endpoints
+
+**Quick API Setup:**
+```javascript
+// Future API configuration
+window.ChatbooksRatings.init({
+    containerId: 'chatbooks-ratings-widget',
+    productId: 'your-product-id',
+    apiBaseUrl: 'https://api.yourcompany.com',
+    apiEndpoint: '/reviews',
+    fallbackToCsv: true  // Graceful fallback during transition
+});
+```
+
 ## 📞 Support
 
 For deployment issues:
@@ -328,5 +346,6 @@ For deployment issues:
 2. Verify file accessibility
 3. Test with example.html locally
 4. Review WIDGET_README.md for detailed docs
+5. Check API_MIGRATION_GUIDE.md for API transition
 
 **Ready to deploy!** 🎉
