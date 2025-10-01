@@ -319,16 +319,6 @@ function App() {
           <div className="custom-reviews-list">
             {filteredRatings.map((rating, index) => (
               <div key={rating.ID || index} className="custom-review">
-                <div className="custom-review-left-panel">
-                  <div className="custom-reviewer">
-                    <div className="custom-reviewer-details">
-                      <span className="custom-reviewer-name unselectable" title={rating['Public Name'] || 'Anonymous'}>
-                        {rating['Public Name'] || 'Anonymous'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
                 <div className="custom-review-center-panel">
                   <div className="custom-review-rating-title">
                     <div className="custom-star-rating custom-review-star-rating" role="img" title={`${rating.Rating} out of 5 stars`}>
@@ -336,6 +326,14 @@ function App() {
                     </div>
                     <div className="custom-review-title" role="heading" aria-level="3">
                       {rating['Review Title'] || 'No Title'}
+                    </div>
+                  </div>
+                  
+                  <div className="custom-reviewer">
+                    <div className="custom-reviewer-details">
+                      <span className="custom-reviewer-name unselectable" title={rating['Public Name'] || 'Anonymous'}>
+                        {rating['Public Name'] || 'Anonymous'}
+                      </span>
                     </div>
                   </div>
                   
