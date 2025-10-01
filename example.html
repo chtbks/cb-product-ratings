@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbooks Ratings Widget Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .widget-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Product Page Example</h1>
+            <p>This is an example of how the Chatbooks Ratings Widget can be embedded on any website.</p>
+        </div>
+        
+        <div class="widget-container">
+            <h2>Customer Reviews</h2>
+            <!-- Widget will be rendered here -->
+            <div id="chatbooks-ratings-widget"></div>
+        </div>
+    </div>
+
+    <!-- Include React and ReactDOM from CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Include the widget script -->
+    <script src="./dist/chatbooks-ratings-widget.js"></script>
+    
+    <!-- Initialize the widget with configuration -->
+    <script>
+        // Wait for the widget to load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.ChatbooksRatings) {
+                // Initialize with custom configuration
+                window.ChatbooksRatings.init({
+                    containerId: 'chatbooks-ratings-widget',
+                    productId: 'example-product',
+                    theme: 'light',
+                    showSearch: true,
+                    showFilters: true,
+                    maxReviews: 5,
+                    showVerifiedPurchase: true,
+                    showDistributionTooltip: true,
+                    customStyles: {
+                        maxWidth: '100%'
+                    }
+                });
+            } else {
+                console.error('ChatbooksRatings widget not loaded');
+            }
+        });
+    </script>
+</body>
+</html>
