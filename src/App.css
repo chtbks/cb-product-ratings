@@ -513,6 +513,14 @@
   color: #ffc107; /* Gold stars like the site */
 }
 
+.star.partial {
+  background: linear-gradient(90deg, #ffc107 var(--fill-percentage, 50%), #e0e0e0 var(--fill-percentage, 50%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 .star.empty {
   color: #e0e0e0; /* Light gray for empty stars */
 }
