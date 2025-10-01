@@ -741,6 +741,326 @@
   }
 }
 
+/* Recommend Friend Analytics Styles */
+.custom-recommend-analytics {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 30px 0;
+  border: 1px solid #e3e3e3;
+}
+
+.custom-recommend-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.custom-recommend-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.custom-recommend-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-recommend-rate {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.custom-recommend-percentage {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #52DBC1;
+  line-height: 1;
+}
+
+.custom-recommend-label {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.custom-recommend-count {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Analytics Inline Container */
+.custom-analytics-inline-container {
+  display: flex;
+  gap: 16px;
+  margin-left: 30px;
+  align-items: flex-start;
+}
+
+/* Inline Recommend Friend Analytics Styles */
+.custom-recommend-analytics-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-width: 200px;
+}
+
+.custom-recommend-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.custom-recommend-progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.custom-recommend-progress-ring-background {
+  fill: none;
+  stroke: #e3e3e3;
+  stroke-width: 6;
+}
+
+.custom-recommend-progress-ring-fill {
+  fill: none;
+  stroke: #52DBC1;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.custom-recommend-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Inline Purchase Again Analytics Styles */
+.custom-purchase-again-analytics-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-width: 200px;
+}
+
+.custom-purchase-again-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.custom-purchase-again-progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.custom-purchase-again-progress-ring-background {
+  fill: none;
+  stroke: #e3e3e3;
+  stroke-width: 6;
+}
+
+.custom-purchase-again-progress-ring-fill {
+  fill: none;
+  stroke: #0066cc;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.custom-purchase-again-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.custom-recommend-percentage-inline {
+  position: relative;
+  z-index: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #52DBC1;
+  line-height: 1;
+}
+
+.custom-recommend-label-inline {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.custom-recommend-count-inline {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.custom-purchase-again-percentage-inline {
+  position: relative;
+  z-index: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0066cc;
+  line-height: 1;
+}
+
+.custom-purchase-again-label-inline {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.custom-purchase-again-count-inline {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Responsive Design for Inline Analytics */
+@media (max-width: 768px) {
+  .custom-analytics-inline-container {
+    flex-direction: column;
+    margin-left: 0;
+    gap: 16px;
+    padding: 0 10px;
+  }
+  
+  .custom-recommend-analytics-inline,
+  .custom-purchase-again-analytics-inline {
+    margin-left: 0;
+    margin-top: 0;
+    min-width: auto;
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .custom-recommend-circle,
+  .custom-purchase-again-circle {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    min-width: 60px;
+    min-height: 60px;
+    overflow: visible;
+  }
+  
+  .custom-recommend-progress-ring,
+  .custom-purchase-again-progress-ring {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .custom-recommend-progress-ring circle,
+  .custom-purchase-again-progress-ring circle {
+    cx: 30;
+    cy: 30;
+    r: 26;
+  }
+  
+  .custom-recommend-percentage-inline,
+  .custom-purchase-again-percentage-inline {
+    font-size: 1.1rem;
+  }
+  
+  .custom-recommend-label-inline,
+  .custom-purchase-again-label-inline {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  .custom-recommend-count-inline,
+  .custom-purchase-again-count-inline {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .custom-analytics-inline-container {
+    padding: 0 5px;
+    gap: 12px;
+  }
+  
+  .custom-recommend-analytics-inline,
+  .custom-purchase-again-analytics-inline {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .custom-recommend-circle,
+  .custom-purchase-again-circle {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+  }
+  
+  .custom-recommend-progress-ring,
+  .custom-purchase-again-progress-ring {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .custom-recommend-progress-ring circle,
+  .custom-purchase-again-progress-ring circle {
+    cx: 25;
+    cy: 25;
+    r: 21;
+  }
+  
+  .custom-recommend-percentage-inline,
+  .custom-purchase-again-percentage-inline {
+    font-size: 1rem;
+  }
+  
+  .custom-recommend-label-inline,
+  .custom-purchase-again-label-inline {
+    font-size: 0.8rem;
+  }
+  
+  .custom-recommend-count-inline,
+  .custom-purchase-again-count-inline {
+    font-size: 0.7rem;
+  }
+}
+
+/* Responsive Design for Analytics */
+@media (max-width: 768px) {
+  .custom-recommend-analytics {
+    padding: 16px;
+    margin: 20px 0;
+  }
+  
+  .custom-recommend-percentage {
+    font-size: 2rem;
+  }
+}
+
 /* Pagination Styles */
 .pagination-controls {
   text-align: center;
