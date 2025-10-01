@@ -13,6 +13,7 @@ function App() {
     averageRating: 0,
     ratingDistribution: {}
   });
+  const [showDistributionTooltip, setShowDistributionTooltip] = useState(false);
 
   useEffect(() => {
     // Load CSV data
@@ -159,8 +160,43 @@ function App() {
                       {stats.averageRating}
                     </div>
                     <div className="custom-bottom-line-right-panel">
-                      <div className="custom-star-rating custom-bottom-line-stars" role="img" title={`${stats.averageRating} out of 5 stars`}>
+                      <div 
+                        className="custom-star-rating custom-bottom-line-stars custom-stars-hoverable" 
+                        role="img" 
+                        title={`${stats.averageRating} out of 5 stars`}
+                        onMouseEnter={() => setShowDistributionTooltip(true)}
+                        onMouseLeave={() => setShowDistributionTooltip(false)}
+                      >
                         {renderStars(stats.averageRating)}
+                        {showDistributionTooltip && (
+                          <div className="custom-distribution-tooltip">
+                            <div className="custom-tooltip-header">
+                              <div className="custom-tooltip-rating">{stats.averageRating} out of 5</div>
+                              <div className="custom-tooltip-stars">
+                                {renderStars(stats.averageRating)}
+                              </div>
+                              <div className="custom-tooltip-total">{stats.totalReviews} global ratings</div>
+                            </div>
+                            <div className="custom-tooltip-distribution">
+                              {[5, 4, 3, 2, 1].map(star => {
+                                const count = stats.ratingDistribution[star] || 0;
+                                const percentage = stats.totalReviews > 0 ? Math.round((count / stats.totalReviews) * 100) : 0;
+                                return (
+                                  <div key={star} className="custom-distribution-row">
+                                    <div className="custom-distribution-label">{star} star</div>
+                                    <div className="custom-distribution-bar">
+                                      <div 
+                                        className="custom-distribution-fill" 
+                                        style={{ width: `${percentage}%` }}
+                                      ></div>
+                                    </div>
+                                    <div className="custom-distribution-percentage">{percentage}%</div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
                       </div>
                       <div className="custom-bottom-line-text">
                         <div className="custom-bottom-line-basic-text">{stats.totalReviews} Reviews</div>

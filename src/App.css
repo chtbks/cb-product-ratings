@@ -462,6 +462,95 @@
   user-select: none;
 }
 
+/* Distribution Tooltip */
+.custom-stars-hoverable {
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-distribution-tooltip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  min-width: 280px;
+  z-index: 1000;
+  font-size: 0.9rem;
+}
+
+.custom-tooltip-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.custom-tooltip-rating {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.custom-tooltip-stars {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.custom-tooltip-total {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.custom-tooltip-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.custom-distribution-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-distribution-label {
+  width: 50px;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left;
+}
+
+.custom-distribution-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.custom-distribution-fill {
+  height: 100%;
+  background-color: #ffc107;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.custom-distribution-percentage {
+  width: 35px;
+  font-size: 0.8rem;
+  color: #333;
+  text-align: right;
+  font-weight: 500;
+}
+
 .custom-review-center-panel {
   flex: 1;
   min-width: 0;
