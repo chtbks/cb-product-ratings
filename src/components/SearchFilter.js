@@ -1,4 +1,7 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { debounce } from '../utils/debounce';
+import { CONFIG } from '../utils/constants';
 
 const SearchFilter = React.memo(({ onSearchChange, onRatingChange, ratingFilter }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -6,15 +9,9 @@ const SearchFilter = React.memo(({ onSearchChange, onRatingChange, ratingFilter 
 
   // Debounced search handler
   const debouncedSearch = useCallback(
-    (() => {
-      let timeoutId;
-      return (term) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          onSearchChange(term);
-        }, 300);
-      };
-    })(),
+    debounce((term) => {
+      onSearchChange(term);
+    }, CONFIG.DEBOUNCE_DELAY),
     [onSearchChange]
   );
 
@@ -89,5 +86,11 @@ const SearchFilter = React.memo(({ onSearchChange, onRatingChange, ratingFilter 
 });
 
 SearchFilter.displayName = 'SearchFilter';
+
+SearchFilter.propTypes = {
+  onSearchChange: PropTypes.func.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  ratingFilter: PropTypes.string.isRequired
+};
 
 export default SearchFilter;

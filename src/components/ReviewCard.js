@@ -1,14 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StarRating from './StarRating';
+import { formatDate } from '../utils/dateUtils';
+import { sanitizeHtml, extractInitials } from '../utils/stringUtils';
 
 const ReviewCard = React.memo(({ review }) => {
-  const formatDate = (dateString) => {
-    try {
-      return new Date(dateString).toLocaleDateString();
-    } catch {
-      return dateString;
-    }
-  };
 
   const parseOrderId = (urlParams) => {
     try {
@@ -46,9 +42,12 @@ const ReviewCard = React.memo(({ review }) => {
             </span>
           )}
         </div>
-        <div className="custom-review-text">
-          {review['Review Text']}
-        </div>
+        <div 
+          className="custom-review-text"
+          dangerouslySetInnerHTML={{ 
+            __html: sanitizeHtml(review['Review Text']) 
+          }}
+        />
         <div className="custom-review-date">
           {formatDate(review['Review Date'])}
         </div>
@@ -58,5 +57,17 @@ const ReviewCard = React.memo(({ review }) => {
 });
 
 ReviewCard.displayName = 'ReviewCard';
+
+ReviewCard.propTypes = {
+  review: PropTypes.shape({
+    ID: PropTypes.string.isRequired,
+    Rating: PropTypes.string.isRequired,
+    'Review Title': PropTypes.string,
+    'Review Text': PropTypes.string,
+    'Public Name': PropTypes.string,
+    'Review Date': PropTypes.string,
+    'URL Params': PropTypes.string
+  }).isRequired
+};
 
 export default ReviewCard;
