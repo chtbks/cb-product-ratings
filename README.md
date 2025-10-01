@@ -1,112 +1,94 @@
-# Classic Book Reviews
+# CB Product Ratings Widget
 
-A React application for displaying book reviews from CSV data with a clean, modern interface.
+A high-performance React application for displaying customer product reviews with advanced filtering, analytics, and pagination.
 
-## Features
-
-- 📚 Display book reviews in an attractive card layout
-- ⭐ Visual star ratings (1-5 stars)
-- 📱 Responsive design for mobile and desktop
-- 🔄 Load more reviews functionality
-- 📊 CSV data loading with Papa Parse
-- 🐳 Docker development environment
-
-## Quick Start with Docker
+## 🚀 Quick Start
 
 ### Prerequisites
-- Docker and Docker Compose installed on your system
+- Node.js 18+
+- Docker (optional)
 
-### Running the Application
-
-1. **Build and start the development environment:**
-   ```bash
-   docker-compose up --build
-   ```
-
-2. **Access the application:**
-   Open your browser and navigate to `http://localhost:3000`
-
-3. **Development workflow:**
-   - The app will automatically reload when you make changes to the source code
-   - The container includes hot reloading for a smooth development experience
-
-### Stopping the Application
-
+### Development
 ```bash
-docker-compose down
+npm install
+npm start
 ```
 
-## Local Development (without Docker)
+### Docker
+```bash
+docker build -t cb-product-ratings .
+docker run -p 3000:3000 cb-product-ratings
+```
 
-If you prefer to run the application locally:
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Start the development server:**
-   ```bash
-   npm start
-   ```
-
-3. **Access the application:**
-   Open `http://localhost:3000` in your browser
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
-├── components/
-│   ├── ReviewCard.js          # Individual review card component
-│   ├── ReviewCard.css         # Card styling
-│   ├── StarRating.js          # Star rating display component
-│   └── StarRating.css         # Star rating styling
-├── App.js                     # Main application component
-├── App.css                    # Main application styling
-├── index.js                   # Application entry point
-└── index.css                  # Global styles
-
-public/
-└── sample-reviews.csv         # Sample CSV data
+├── components/           # React components
+├── hooks/               # Custom React hooks
+├── utils/               # Utility functions
+├── App.js              # Main application
+└── App.css             # Global styles
 ```
 
-## CSV Data Format
+## 🎯 Key Features
 
-The application expects CSV files with the following columns:
-- `id`: Unique identifier
-- `book`: Book title
-- `title`: Review title
-- `text`: Review content
-- `rating`: Star rating (1-5)
-- `reviewer`: Reviewer name
-- `date`: Review date (YYYY-MM-DD format)
+- **CSV Data Loading**: Parses product ratings from CSV file
+- **Search & Filter**: Real-time search with rating filters
+- **Pagination**: Efficient pagination for large datasets
+- **Analytics**: Review statistics and insights
+- **Performance Optimized**: Lazy loading, memoization, code splitting
 
-## Customization
+## 🛠 Development
 
-### Adding Your Own CSV Data
+### Quick Commands
+```bash
+npm start          # Development server
+npm run build      # Production build
+npm run lint       # Code linting
+```
 
-1. Replace `public/sample-reviews.csv` with your own CSV file
-2. Ensure the CSV follows the expected format
-3. The application will automatically load your data
+### Key Dependencies
+- **React 18**: Modern React features
+- **PapaParse**: CSV parsing
+- **PropTypes**: Type checking
 
-### Styling
+## 📚 Documentation
 
-- Modify CSS files in the `src/` directory to customize the appearance
-- The design uses a clean, modern aesthetic with responsive grid layout
-- Color scheme can be adjusted in the CSS files
+All documentation is located in the `docs/` directory:
 
-## Technologies Used
+### Essential Documentation
+- **[DEVELOPER_HANDOVER.md](docs/DEVELOPER_HANDOVER.md)**: Complete developer handover guide
+- **[INTEGRATION_GUIDE.md](docs/INTEGRATION_GUIDE.md)**: Step-by-step integration instructions
+- **[WEBPAGE_INTEGRATION.md](docs/WEBPAGE_INTEGRATION.md)**: Integration into larger web applications
+- **[API_INTEGRATION.md](docs/API_INTEGRATION.md)**: Backend API integration and data sources
 
-- **React 18** - Frontend framework
-- **Papa Parse** - CSV parsing library
-- **Docker** - Containerization
-- **CSS Grid** - Responsive layout
-- **Modern CSS** - Clean styling with gradients and animations
+### Additional Resources
+- **[data/README.md](data/README.md)**: Data files documentation
+- **[scripts/README.md](scripts/README.md)**: Scripts documentation
+- **[tests/README.md](tests/README.md)**: Testing documentation
 
-## Development Notes
+## 🎨 Features
 
-- The application includes fallback sample data if CSV loading fails
-- Hot reloading is enabled for smooth development
-- The Docker setup includes volume mounting for live code updates
-- Responsive design works on mobile, tablet, and desktop devices
+### Performance Optimizations
+- **React.memo**: Prevents unnecessary re-renders
+- **useMemo/useCallback**: Memoizes expensive calculations
+- **Lazy Loading**: Code splitting for better performance
+- **Debouncing**: Reduces search processing
+- **Tree Shaking**: Removes unused code
+
+### Component Architecture
+- **App.js**: Main container with state management and performance monitoring
+- **ReviewCard.js**: Individual review display with star ratings and verified purchase tags
+- **SearchFilter.js**: Search input with debouncing and rating dropdown filter
+- **AnalyticsSection.js**: Review statistics with lazy loading
+- **Pagination.js**: Page navigation controls
+
+### Custom Hooks
+- **useReviews.js**: CSV data loading, validation, and performance monitoring
+- **usePagination.js**: Pagination state and navigation logic
+- **useAnalytics.js**: Statistics calculation and data aggregation
+
+---
+
+**Built with React 18, optimized for performance, and designed for maintainability.**
