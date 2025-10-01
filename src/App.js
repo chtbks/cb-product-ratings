@@ -14,6 +14,17 @@ function App() {
     ratingDistribution: {}
   });
   const [showDistributionTooltip, setShowDistributionTooltip] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // Global dropdown handler
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const selectRating = (rating) => {
+    setRatingFilter(rating);
+    setDropdownOpen(false);
+  };
 
   useEffect(() => {
     // Load CSV data
@@ -236,13 +247,8 @@ function App() {
               <div className="custom-dropdown-wrapper custom-score-filter-container">
                 <button 
                   className="custom-dropdown-closable" 
-                  aria-expanded="false"
-                  onClick={() => {
-                    const dropdown = document.querySelector('.custom-dropdown-content-wrapper');
-                    if (dropdown) {
-                      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-                    }
-                  }}
+                  aria-expanded={dropdownOpen}
+                  onClick={toggleDropdown}
                 >
                   <div className="custom-dropdown-base">
                     <input 
@@ -257,89 +263,39 @@ function App() {
                     </svg>
                   </div>
                 </button>
-                <div className="custom-dropdown-content-wrapper" style={{display: 'none'}}>
-                  <div 
-                    className={`custom-dropdown-option ${ratingFilter === 'all' ? 'custom-dropdown-option--focus' : ''}`}
-                    onClick={() => setRatingFilter('all')}
-                  >
-                    <div className="custom-dropdown-option-label">
-                      <span className="formated-value">All ratings</span>
-                    </div>
-                    <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <div 
-                    className={`custom-dropdown-option ${ratingFilter === '5' ? 'custom-dropdown-option--focus' : ''}`}
-                    onClick={() => setRatingFilter('5')}
-                  >
-                    <div className="custom-dropdown-option-label">
-                      <div className="custom-star-rating-filter custom-score">
-                        {renderStars(5)}
+                
+                {dropdownOpen && (
+                  <div className="custom-dropdown-content-wrapper">
+                    {[
+                      { value: 'all', label: 'All ratings', stars: null },
+                      { value: '5', label: '5 stars', stars: 5 },
+                      { value: '4', label: '4 stars', stars: 4 },
+                      { value: '3', label: '3 stars', stars: 3 },
+                      { value: '2', label: '2 stars', stars: 2 },
+                      { value: '1', label: '1 star', stars: 1 }
+                    ].map((option) => (
+                      <div 
+                        key={option.value}
+                        className={`custom-dropdown-option ${ratingFilter === option.value ? 'custom-dropdown-option--focus' : ''}`}
+                        onClick={() => selectRating(option.value)}
+                      >
+                        <div className="custom-dropdown-option-label">
+                          {option.stars && (
+                            <div className="custom-star-rating-filter custom-score">
+                              {renderStars(option.stars)}
+                            </div>
+                          )}
+                          <span className="formated-value">{option.label}</span>
+                        </div>
+                        {ratingFilter === option.value && (
+                          <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
                       </div>
-                      <span className="formated-value">5 stars</span>
-                    </div>
-                    <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    ))}
                   </div>
-                  <div 
-                    className={`custom-dropdown-option ${ratingFilter === '4' ? 'custom-dropdown-option--focus' : ''}`}
-                    onClick={() => setRatingFilter('4')}
-                  >
-                    <div className="custom-dropdown-option-label">
-                      <div className="custom-star-rating-filter custom-score">
-                        {renderStars(4)}
-                      </div>
-                      <span className="formated-value">4 stars</span>
-                    </div>
-                    <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <div 
-                    className={`custom-dropdown-option ${ratingFilter === '3' ? 'custom-dropdown-option--focus' : ''}`}
-                    onClick={() => setRatingFilter('3')}
-                  >
-                    <div className="custom-dropdown-option-label">
-                      <div className="custom-star-rating-filter custom-score">
-                        {renderStars(3)}
-                      </div>
-                      <span className="formated-value">3 stars</span>
-                    </div>
-                    <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <div 
-                    className={`custom-dropdown-option ${ratingFilter === '2' ? 'custom-dropdown-option--focus' : ''}`}
-                    onClick={() => setRatingFilter('2')}
-                  >
-                    <div className="custom-dropdown-option-label">
-                      <div className="custom-star-rating-filter custom-score">
-                        {renderStars(2)}
-                      </div>
-                      <span className="formated-value">2 stars</span>
-                    </div>
-                    <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <div 
-                    className={`custom-dropdown-option ${ratingFilter === '1' ? 'custom-dropdown-option--focus' : ''}`}
-                    onClick={() => setRatingFilter('1')}
-                  >
-                    <div className="custom-dropdown-option-label">
-                      <div className="custom-star-rating-filter custom-score">
-                        {renderStars(1)}
-                      </div>
-                      <span className="formated-value">1 star</span>
-                    </div>
-                    <svg className="custom-selected-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
