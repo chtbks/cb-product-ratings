@@ -57,6 +57,7 @@ jspm_packages/
 
 # Build outputs
 dist/
+build/
 
 # Test files
 tests/__tests__/
