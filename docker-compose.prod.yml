@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  cb-product-ratings:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_BASE_URL=${REACT_APP_API_BASE_URL:-}
+      - REACT_APP_FEATURE_ANALYTICS=${REACT_APP_FEATURE_ANALYTICS:-true}
+      - REACT_APP_FEATURE_CACHING=${REACT_APP_FEATURE_CACHING:-true}
+      - REACT_APP_FEATURE_OFFLINE=${REACT_APP_FEATURE_OFFLINE:-false}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cb-product-ratings.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.cb-product-ratings.tls=true"
+      - "traefik.http.routers.cb-product-ratings.tls.certresolver=letsencrypt"
+    networks:
+      - cb-product-ratings-network
+
+networks:
+  cb-product-ratings-network:
+    driver: bridge

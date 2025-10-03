@@ -1,112 +1,167 @@
-# Classic Book Reviews
+# CB Product Ratings Widget
 
-A React application for displaying book reviews from CSV data with a clean, modern interface.
+A modern, production-ready React application for displaying product ratings and reviews with advanced analytics and filtering capabilities.
 
-## Features
+## 🚀 Features
 
-- 📚 Display book reviews in an attractive card layout
-- ⭐ Visual star ratings (1-5 stars)
-- 📱 Responsive design for mobile and desktop
-- 🔄 Load more reviews functionality
-- 📊 CSV data loading with Papa Parse
-- 🐳 Docker development environment
+- **📊 Advanced Analytics**: Comprehensive rating distribution, recommendation rates, and purchase intent analytics
+- **🔍 Smart Filtering**: Real-time search and rating-based filtering
+- **⭐ Interactive Ratings**: Visual star ratings with hover tooltips and distribution charts
+- **📱 Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **⚡ Performance Optimized**: Service layer caching, lazy loading, and efficient data management
+- **🎨 Modern UI**: Clean, professional interface with custom fonts and animations
+- **🔧 Developer Friendly**: Well-organized codebase following React best practices
 
-## Quick Start with Docker
+## 🏗️ Architecture
 
-### Prerequisites
-- Docker and Docker Compose installed on your system
+This application follows a modern, scalable architecture:
 
-### Running the Application
+- **Service Layer**: Centralized data management with caching and error handling
+- **Component-Based**: Feature-based organization with reusable UI components
+- **Custom Hooks**: Encapsulated business logic and state management
+- **Utility Functions**: Comprehensive helper functions and performance optimizations
+- **Asset Organization**: Properly structured fonts, images, and data files
 
-1. **Build and start the development environment:**
-   ```bash
-   docker-compose up --build
-   ```
+## 📋 Prerequisites
 
-2. **Access the application:**
-   Open your browser and navigate to `http://localhost:3000`
+- Node.js 16+ or Docker
+- Modern web browser
+- Git
 
-3. **Development workflow:**
-   - The app will automatically reload when you make changes to the source code
-   - The container includes hot reloading for a smooth development experience
+## 🚀 Quick Start
 
-### Stopping the Application
+### Option 1: Docker (Recommended)
 
 ```bash
-docker-compose down
+# Clone the repository
+git clone <repository-url>
+cd cb-product-ratings
+
+# Start the application
+docker compose up --build
+
+# Access the application
+open http://localhost:3000
 ```
 
-## Local Development (without Docker)
+### Option 2: Local Development
 
-If you prefer to run the application locally:
+```bash
+# Install dependencies
+npm install
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+# Start development server
+npm start
 
-2. **Start the development server:**
-   ```bash
-   npm start
-   ```
+# Access the application
+open http://localhost:3000
+```
 
-3. **Access the application:**
-   Open `http://localhost:3000` in your browser
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
-├── components/
-│   ├── ReviewCard.js          # Individual review card component
-│   ├── ReviewCard.css         # Card styling
-│   ├── StarRating.js          # Star rating display component
-│   └── StarRating.css         # Star rating styling
-├── App.js                     # Main application component
-├── App.css                    # Main application styling
-├── index.js                   # Application entry point
-└── index.css                  # Global styles
-
-public/
-└── sample-reviews.csv         # Sample CSV data
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   └── features/       # Feature-specific components
+├── services/           # Service layer
+│   ├── api/           # API services
+│   └── data/          # Data services
+├── hooks/             # Custom React hooks
+├── utils/             # Utility functions
+├── assets/            # Static assets
+└── config/           # Application configuration
 ```
 
-## CSV Data Format
+## 🛠️ Development
 
-The application expects CSV files with the following columns:
-- `id`: Unique identifier
-- `book`: Book title
-- `title`: Review title
-- `text`: Review content
-- `rating`: Star rating (1-5)
-- `reviewer`: Reviewer name
-- `date`: Review date (YYYY-MM-DD format)
+### Available Scripts
 
-## Customization
+- `npm start` - Start development server
+- `npm build` - Build for production
+- `npm test` - Run tests
+- `npm run lint` - Run ESLint
 
-### Adding Your Own CSV Data
+### Docker Development
 
-1. Replace `public/sample-reviews.csv` with your own CSV file
-2. Ensure the CSV follows the expected format
-3. The application will automatically load your data
+```bash
+# Start development environment
+./scripts/development/docker-dev.sh
 
-### Styling
+# Or manually
+docker compose up --build
+```
 
-- Modify CSS files in the `src/` directory to customize the appearance
-- The design uses a clean, modern aesthetic with responsive grid layout
-- Color scheme can be adjusted in the CSS files
+## 🚀 Deployment
 
-## Technologies Used
+### Production Build
 
-- **React 18** - Frontend framework
-- **Papa Parse** - CSV parsing library
-- **Docker** - Containerization
-- **CSS Grid** - Responsive layout
-- **Modern CSS** - Clean styling with gradients and animations
+```bash
+# Build the application
+npm run build
 
-## Development Notes
+# The build files will be in the 'build' directory
+```
 
-- The application includes fallback sample data if CSV loading fails
-- Hot reloading is enabled for smooth development
-- The Docker setup includes volume mounting for live code updates
-- Responsive design works on mobile, tablet, and desktop devices
+### Docker Production
+
+```bash
+# Build production image
+docker build -t cb-product-ratings .
+
+# Run production container
+docker run -p 3000:3000 cb-product-ratings
+```
+
+### Deployment Script
+
+```bash
+# Use the deployment script
+./deploy.sh
+```
+
+## 📊 Data Format
+
+The application expects CSV data with the following columns:
+
+- `ID` - Unique identifier
+- `Review Title` - Review title
+- `Rating` - Rating (1-5)
+- `Review Text` - Review content
+- `Public Name` - Reviewer name
+- `Review Date` - Review date
+- `Recommend Friend?` - Recommendation score (1-5)
+- `Purchase Again?` - Purchase intent score (1-5)
+- `URL Params` - Additional metadata (JSON)
+
+## 🔧 Configuration
+
+Environment variables can be configured in `.env`:
+
+```env
+REACT_APP_API_BASE_URL=your-api-url
+REACT_APP_FEATURE_ANALYTICS=true
+REACT_APP_FEATURE_CACHING=true
+```
+
+## 📚 Documentation
+
+- [Project Structure](PROJECT_STRUCTURE.md) - Detailed architecture documentation
+- [API Documentation](docs/api/) - API integration guide
+- [Component Documentation](docs/components/) - Component usage guide
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions, please open an issue in the repository.
