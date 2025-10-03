@@ -8,38 +8,45 @@ const AnalyticsSection = ({
   onMouseEnter, 
   onMouseLeave 
 }) => {
+  // Handle the new analytics service structure
+  const analytics = stats || {};
+  const basic = analytics.basic || {};
+  const distribution = analytics.distribution || {};
+  const recommendFriend = analytics.recommendFriend || {};
+  const purchaseAgain = analytics.purchaseAgain || {};
+
   return (
     <div className="custom-widget-container">
       <div className="custom-main-layout">
         <div className="custom-header-container">
-          <div className="custom-bottom-line" average-score={stats.averageRating}>
+          <div className="custom-bottom-line" average-score={basic.averageRating}>
             <div className="custom-summary-section">
               <div className="custom-bottom-line-summary">
                 <div className="custom-bottom-line-left-panel custom-bottom-line-score">
-                  {stats.averageRating}
+                  {basic.averageRating}
                 </div>
                 <div className="custom-bottom-line-right-panel">
                   <div 
                     className="custom-star-rating custom-bottom-line-stars custom-stars-hoverable" 
                     role="img" 
-                    title={`${stats.averageRating} out of 5 stars`}
+                    title={`${basic.averageRating} out of 5 stars`}
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
                   >
-                    <StarRating rating={stats.averageRating} />
+                    <StarRating rating={basic.averageRating} />
                     {showDistributionTooltip && (
                       <div className="custom-distribution-tooltip">
                         <div className="custom-tooltip-header">
-                          <div className="custom-tooltip-rating">{stats.averageRating} out of 5</div>
+                          <div className="custom-tooltip-rating">{basic.averageRating} out of 5</div>
                           <div className="custom-tooltip-stars">
-                            <StarRating rating={stats.averageRating} />
+                            <StarRating rating={basic.averageRating} />
                           </div>
-                          <div className="custom-tooltip-total">{stats.totalReviews} global ratings</div>
+                          <div className="custom-tooltip-total">{basic.totalReviews} global ratings</div>
                         </div>
                         <div className="custom-tooltip-distribution">
                           {[5, 4, 3, 2, 1].map(star => {
-                            const count = stats.ratingDistribution[star] || 0;
-                            const percentage = stats.totalReviews > 0 ? Math.round((count / stats.totalReviews) * 100) : 0;
+                            const count = distribution.counts[star] || 0;
+                            const percentage = basic.totalReviews > 0 ? Math.round((count / basic.totalReviews) * 100) : 0;
                             return (
                               <div key={star} className="custom-distribution-row">
                                 <div className="custom-distribution-label">{star} star</div>
@@ -58,7 +65,7 @@ const AnalyticsSection = ({
                     )}
                   </div>
                   <div className="custom-bottom-line-text">
-                    <div className="custom-bottom-line-basic-text">{stats.totalReviews} Reviews</div>
+                    <div className="custom-bottom-line-basic-text">{basic.totalReviews} Reviews</div>
                   </div>
                 </div>
               </div>
@@ -67,30 +74,30 @@ const AnalyticsSection = ({
               <div className="custom-analytics-section-container">
                 <div className="custom-analytics-inline-container">
                    {/* Recommend Friend Analytics */}
-                   {stats.recommendFriendStats.totalResponses > 0 && (
+                   {recommendFriend.totalResponses > 0 && (
                      <div className="custom-recommend-analytics-inline">
                        <div className="custom-recommend-percentage-text">
-                         <span className="custom-recommend-percentage-inline">{Math.round(stats.recommendFriendStats.recommendRate)}%</span>
+                         <span className="custom-recommend-percentage-inline">{Math.round(recommendFriend.recommendRate)}%</span>
                        </div>
                        <div className="custom-recommend-text">
                          <div className="custom-recommend-label-inline">would recommend</div>
                          <div className="custom-recommend-count-inline">
-                           {stats.recommendFriendStats.recommendCount || Math.round((stats.recommendFriendStats.recommendRate / 100) * stats.recommendFriendStats.totalResponses)} of {stats.recommendFriendStats.totalResponses}
+                           {recommendFriend.recommendCount || Math.round((recommendFriend.recommendRate / 100) * recommendFriend.totalResponses)} of {recommendFriend.totalResponses}
                          </div>
                        </div>
                      </div>
                    )}
                    
                    {/* Purchase Again Analytics */}
-                   {stats.purchaseAgainStats.totalResponses > 0 && (
+                   {purchaseAgain.totalResponses > 0 && (
                      <div className="custom-purchase-again-analytics-inline">
                        <div className="custom-purchase-again-percentage-text">
-                         <span className="custom-purchase-again-percentage-inline">{Math.round(stats.purchaseAgainStats.purchaseAgainRate)}%</span>
+                         <span className="custom-purchase-again-percentage-inline">{Math.round(purchaseAgain.purchaseAgainRate)}%</span>
                        </div>
                        <div className="custom-purchase-again-text">
                          <div className="custom-purchase-again-label-inline">would purchase again</div>
                          <div className="custom-purchase-again-count-inline">
-                           {stats.purchaseAgainStats.purchaseAgainCount || Math.round((stats.purchaseAgainStats.purchaseAgainRate / 100) * stats.purchaseAgainStats.totalResponses)} of {stats.purchaseAgainStats.totalResponses}
+                           {purchaseAgain.purchaseAgainCount || Math.round((purchaseAgain.purchaseAgainRate / 100) * purchaseAgain.totalResponses)} of {purchaseAgain.totalResponses}
                          </div>
                        </div>
                      </div>
