@@ -4,6 +4,19 @@ export const usePagination = (data, itemsPerPage = 10) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const paginationData = useMemo(() => {
+    if (!data || !Array.isArray(data)) {
+      return {
+        currentItems: [],
+        totalPages: 0,
+        currentPage: 1,
+        hasNextPage: false,
+        hasPrevPage: false,
+        startIndex: 0,
+        endIndex: 0,
+        totalItems: 0
+      };
+    }
+
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;

@@ -1,0 +1,161 @@
+/* SearchFilter Component Styles - Exact replication from App.css */
+.custom-search-filter {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0; /* Light gray border like the site */
+  border-radius: 4px;
+  background: white;
+  flex: 0 0 75%; /* 75% of the available space */
+  min-width: 200px;
+  height: 48px; /* Set explicit height to match dropdown */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.custom-search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  text-align: left; /* Ensure text is left-aligned */
+}
+
+.custom-search-input::placeholder {
+  color: #999999; /* Light gray for placeholder */
+  font-weight: 400;
+  text-align: left; /* Left-align placeholder text */
+}
+
+.custom-dropdown-wrapper {
+  position: relative;
+  min-width: 150px;
+  flex: 0 0 25%; /* 25% of the available space */
+  height: 48px; /* Match search filter height exactly */
+}
+
+.custom-dropdown-closable {
+  width: 100%;
+  height: 48px; /* Match search filter height exactly */
+  padding: 0; /* Remove padding to use height instead */
+  border: 1px solid #e0e0e0; /* Light gray border like the site */
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Reset button defaults */
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.custom-dropdown-closable:hover {
+  border-color: #333333; /* Dark gray on hover like the site */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.custom-dropdown-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  border: none; /* No border - parent button has the border */
+  border-radius: 0; /* No border radius - parent button has it */
+  background: transparent; /* Transparent - parent button has background */
+  height: 100%; /* Fill parent container */
+}
+
+.custom-dropdown-input {
+  flex: 1;
+  padding: 12px 16px; /* Maintain padding for proper spacing */
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  height: 100%; /* Fill the full height of the container */
+}
+
+.custom-dropdown-input::placeholder {
+  color: #999999; /* Light gray for placeholder */
+  font-weight: 400;
+  text-align: left; /* Left-align placeholder text */
+}
+
+.custom-dropdown-arrow {
+  transition: transform 0.3s ease;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.custom-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 6px;
+}
+
+.custom-dropdown-option {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0;
+  border-radius: 0;
+  min-height: 56px;
+}
+
+.custom-dropdown-option:hover {
+  background-color: #f8f9fa;
+}
+
+.custom-dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.custom-dropdown-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: flex-start;
+  font-size: 16px;
+}
+
+.custom-dropdown-check {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-dropdown-option--focus .custom-dropdown-check {
+  opacity: 1;
+}

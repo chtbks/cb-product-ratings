@@ -1,0 +1,140 @@
+/* ReviewCard Component Styles - Exact replication from App.css */
+.custom-review {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0; /* Light gray border like the site */
+  gap: 20px;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.custom-review:last-child {
+  border-bottom: none;
+}
+
+.custom-review-center-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+.custom-review-rating-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.custom-review-star-rating {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.custom-review-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333333; /* Dark gray like the site */
+  line-height: 1.4;
+  margin: 0;
+}
+
+.custom-reviewer {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-reviewer-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-reviewer-name-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.custom-reviewer-name {
+  font-weight: 600;
+  color: #666666; /* Medium gray like the site */
+  font-size: 0.9rem;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.custom-verified-purchase {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #155B9B;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.custom-verified-text {
+  color: #155B9B;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.custom-verified-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: #155B9B;
+  border-radius: 50%;
+}
+
+.custom-review-content {
+  margin-bottom: 16px;
+}
+
+.custom-text-container {
+  color: #333333; /* Dark gray like the site */
+  line-height: 1.6;
+}
+
+.custom-read-more-text {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.custom-review-right-panel {
+  min-width: 200px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.custom-review-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.custom-review-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.custom-date-label {
+  font-size: 0.8rem;
+  color: #999999; /* Light gray like the site */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.custom-date-format {
+  font-size: 0.9rem;
+  color: #666666; /* Medium gray like the site */
+  font-weight: 500;
+}

@@ -1,94 +1,167 @@
 # CB Product Ratings Widget
 
-A high-performance React application for displaying customer product reviews with advanced filtering, analytics, and pagination.
+A modern, production-ready React application for displaying product ratings and reviews with advanced analytics and filtering capabilities.
+
+## 🚀 Features
+
+- **📊 Advanced Analytics**: Comprehensive rating distribution, recommendation rates, and purchase intent analytics
+- **🔍 Smart Filtering**: Real-time search and rating-based filtering
+- **⭐ Interactive Ratings**: Visual star ratings with hover tooltips and distribution charts
+- **📱 Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **⚡ Performance Optimized**: Service layer caching, lazy loading, and efficient data management
+- **🎨 Modern UI**: Clean, professional interface with custom fonts and animations
+- **🔧 Developer Friendly**: Well-organized codebase following React best practices
+
+## 🏗️ Architecture
+
+This application follows a modern, scalable architecture:
+
+- **Service Layer**: Centralized data management with caching and error handling
+- **Component-Based**: Feature-based organization with reusable UI components
+- **Custom Hooks**: Encapsulated business logic and state management
+- **Utility Functions**: Comprehensive helper functions and performance optimizations
+- **Asset Organization**: Properly structured fonts, images, and data files
+
+## 📋 Prerequisites
+
+- Node.js 16+ or Docker
+- Modern web browser
+- Git
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Node.js 18+
-- Docker (optional)
+### Option 1: Docker (Recommended)
 
-### Development
 ```bash
-npm install
-npm start
+# Clone the repository
+git clone <repository-url>
+cd cb-product-ratings
+
+# Start the application
+docker compose up --build
+
+# Access the application
+open http://localhost:3000
 ```
 
-### Docker
+### Option 2: Local Development
+
 ```bash
-docker build -t cb-product-ratings .
-docker run -p 3000:3000 cb-product-ratings
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Access the application
+open http://localhost:3000
 ```
 
 ## 📁 Project Structure
 
 ```
 src/
-├── components/           # React components
-├── hooks/               # Custom React hooks
-├── utils/               # Utility functions
-├── App.js              # Main application
-└── App.css             # Global styles
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   └── features/       # Feature-specific components
+├── services/           # Service layer
+│   ├── api/           # API services
+│   └── data/          # Data services
+├── hooks/             # Custom React hooks
+├── utils/             # Utility functions
+├── assets/            # Static assets
+└── config/           # Application configuration
 ```
 
-## 🎯 Key Features
+## 🛠️ Development
 
-- **CSV Data Loading**: Parses product ratings from CSV file
-- **Search & Filter**: Real-time search with rating filters
-- **Pagination**: Efficient pagination for large datasets
-- **Analytics**: Review statistics and insights
-- **Performance Optimized**: Lazy loading, memoization, code splitting
+### Available Scripts
 
-## 🛠 Development
+- `npm start` - Start development server
+- `npm build` - Build for production
+- `npm test` - Run tests
+- `npm run lint` - Run ESLint
 
-### Quick Commands
+### Docker Development
+
 ```bash
-npm start          # Development server
-npm run build      # Production build
-npm run lint       # Code linting
+# Start development environment
+./scripts/development/docker-dev.sh
+
+# Or manually
+docker compose up --build
 ```
 
-### Key Dependencies
-- **React 18**: Modern React features
-- **PapaParse**: CSV parsing
-- **PropTypes**: Type checking
+## 🚀 Deployment
+
+### Production Build
+
+```bash
+# Build the application
+npm run build
+
+# The build files will be in the 'build' directory
+```
+
+### Docker Production
+
+```bash
+# Build production image
+docker build -t cb-product-ratings .
+
+# Run production container
+docker run -p 3000:3000 cb-product-ratings
+```
+
+### Deployment Script
+
+```bash
+# Use the deployment script
+./deploy.sh
+```
+
+## 📊 Data Format
+
+The application expects CSV data with the following columns:
+
+- `ID` - Unique identifier
+- `Review Title` - Review title
+- `Rating` - Rating (1-5)
+- `Review Text` - Review content
+- `Public Name` - Reviewer name
+- `Review Date` - Review date
+- `Recommend Friend?` - Recommendation score (1-5)
+- `Purchase Again?` - Purchase intent score (1-5)
+- `URL Params` - Additional metadata (JSON)
+
+## 🔧 Configuration
+
+Environment variables can be configured in `.env`:
+
+```env
+REACT_APP_API_BASE_URL=your-api-url
+REACT_APP_FEATURE_ANALYTICS=true
+REACT_APP_FEATURE_CACHING=true
+```
 
 ## 📚 Documentation
 
-All documentation is located in the `docs/` directory:
+- [Project Structure](PROJECT_STRUCTURE.md) - Detailed architecture documentation
+- [API Documentation](docs/api/) - API integration guide
+- [Component Documentation](docs/components/) - Component usage guide
 
-### Essential Documentation
-- **[DEVELOPER_HANDOVER.md](docs/DEVELOPER_HANDOVER.md)**: Complete developer handover guide
-- **[INTEGRATION_GUIDE.md](docs/INTEGRATION_GUIDE.md)**: Step-by-step integration instructions
-- **[WEBPAGE_INTEGRATION.md](docs/WEBPAGE_INTEGRATION.md)**: Integration into larger web applications
-- **[API_INTEGRATION.md](docs/API_INTEGRATION.md)**: Backend API integration and data sources
+## 🤝 Contributing
 
-### Additional Resources
-- **[data/README.md](data/README.md)**: Data files documentation
-- **[scripts/README.md](scripts/README.md)**: Scripts documentation
-- **[tests/README.md](tests/README.md)**: Testing documentation
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-## 🎨 Features
+## 📄 License
 
-### Performance Optimizations
-- **React.memo**: Prevents unnecessary re-renders
-- **useMemo/useCallback**: Memoizes expensive calculations
-- **Lazy Loading**: Code splitting for better performance
-- **Debouncing**: Reduces search processing
-- **Tree Shaking**: Removes unused code
+This project is licensed under the MIT License.
 
-### Component Architecture
-- **App.js**: Main container with state management and performance monitoring
-- **ReviewCard.js**: Individual review display with star ratings and verified purchase tags
-- **SearchFilter.js**: Search input with debouncing and rating dropdown filter
-- **AnalyticsSection.js**: Review statistics with lazy loading
-- **Pagination.js**: Page navigation controls
+## 🆘 Support
 
-### Custom Hooks
-- **useReviews.js**: CSV data loading, validation, and performance monitoring
-- **usePagination.js**: Pagination state and navigation logic
-- **useAnalytics.js**: Statistics calculation and data aggregation
-
----
-
-**Built with React 18, optimized for performance, and designed for maintainability.**
+For support and questions, please open an issue in the repository.

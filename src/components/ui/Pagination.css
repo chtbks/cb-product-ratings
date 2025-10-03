@@ -1,0 +1,94 @@
+/* Pagination Component Styles - Exact replication from App.css */
+.custom-pagination {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px 0;
+}
+
+.custom-pagination-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.custom-pagination-pages {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.custom-pagination-button {
+  background: white;
+  color: #333;
+  border: 1px solid #d0d0d0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #d0d0d0;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.custom-pagination-button:hover:not(:disabled) {
+  background: #f8f9fa;
+  border-color: #24B69A;
+  color: #24B69A;
+}
+
+.custom-pagination-button:focus {
+  outline: 2px solid #24B69A;
+  outline-offset: 2px;
+}
+
+.custom-pagination-button.active {
+  background: #24B69A;
+  color: white;
+  border-color: #24B69A;
+  font-weight: 600;
+}
+
+.custom-pagination-button.active:hover {
+  background: #24B69A;
+  border-color: #24B69A;
+}
+
+.custom-pagination-prev,
+.custom-pagination-next {
+  font-weight: 600;
+  padding: 8px 16px;
+  min-width: auto;
+}
+
+.custom-pagination-button.ellipsis {
+  color: #666;
+  padding: 8px 4px;
+  font-weight: 500;
+  cursor: default;
+  border: none;
+  background: transparent;
+}
+
+.custom-pagination-button.ellipsis:hover {
+  background: transparent;
+}
