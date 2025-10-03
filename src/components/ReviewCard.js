@@ -1,15 +1,8 @@
 import React from 'react';
 import StarRating from './StarRating';
+import { formatDate, hasVerifiedPurchase } from '../utils';
 
 const ReviewCard = ({ review }) => {
-  const formatDate = (dateString) => {
-    try {
-      return new Date(dateString).toLocaleDateString();
-    } catch {
-      return dateString;
-    }
-  };
-
   return (
     <div className="custom-review">
       <div className="custom-review-center-panel">
@@ -28,27 +21,16 @@ const ReviewCard = ({ review }) => {
               <span className="custom-reviewer-name unselectable" title={review['Public Name'] || 'Anonymous'}>
                 {review['Public Name'] || 'Anonymous'}
               </span>
-              {(() => {
-                try {
-                  const urlParams = review['URL Params'];
-                  if (urlParams) {
-                    const parsedParams = JSON.parse(urlParams);
-                    return parsedParams.order_id && (
-                      <span className="custom-verified-purchase">
-                        <span className="custom-verified-text">Verified Purchase</span>
-                        <span className="custom-verified-icon">
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 3L4.5 8.5L2 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </span>
-                      </span>
-                    );
-                  }
-                } catch (e) {
-                  // If JSON parsing fails, don't show the tag
-                }
-                return null;
-              })()}
+              {hasVerifiedPurchase(review) && (
+                <span className="custom-verified-purchase">
+                  <span className="custom-verified-text">Verified Purchase</span>
+                  <span className="custom-verified-icon">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 3L4.5 8.5L2 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </span>
+              )}
             </div>
           </div>
         </div>
