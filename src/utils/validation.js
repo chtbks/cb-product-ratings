@@ -1,60 +1,63 @@
-import { VALIDATION } from './constants';
+/**
+ * Utility functions for data validation
+ */
 
-// Validate CSV data structure
-export const validateCSVData = (data) => {
-  if (!Array.isArray(data)) {
-    return { isValid: false, error: 'Data is not an array' };
+/**
+ * Validates if a value is a valid email
+ * @param {string} email - The email to validate
+ * @returns {boolean} - True if valid email
+ */
+export const isValidEmail = (email) => {
+  if (!email || typeof email !== 'string') return false;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+/**
+ * Validates if a value is a valid URL
+ * @param {string} url - The URL to validate
+ * @returns {boolean} - True if valid URL
+ */
+export const isValidUrl = (url) => {
+  if (!url || typeof url !== 'string') return false;
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
   }
-
-  const requiredFields = ['ID', 'Rating'];
-  const errors = [];
-
-  data.forEach((row, index) => {
-    // Check required fields
-    requiredFields.forEach(field => {
-      if (!row[field]) {
-        errors.push(`Row ${index + 1}: Missing required field '${field}'`);
-      }
-    });
-
-    // Validate rating
-    if (row.Rating) {
-      const rating = parseInt(row.Rating);
-      if (isNaN(rating) || rating < VALIDATION.MIN_RATING || rating > VALIDATION.MAX_RATING) {
-        errors.push(`Row ${index + 1}: Invalid rating '${row.Rating}'`);
-      }
-    }
-
-    // Validate review text length
-    if (row['Review Text'] && row['Review Text'].length > VALIDATION.MAX_REVIEW_LENGTH) {
-      errors.push(`Row ${index + 1}: Review text too long`);
-    }
-  });
-
-  return {
-    isValid: errors.length === 0,
-    errors: errors
-  };
 };
 
-// Sanitize user input
-export const sanitizeInput = (input) => {
-  if (typeof input !== 'string') return input;
-  
-  return input
-    .trim()
-    .replace(/[<>]/g, '') // Remove potential HTML tags
-    .substring(0, VALIDATION.MAX_REVIEW_LENGTH);
+/**
+ * Validates if a value is a valid rating (1-5)
+ * @param {any} rating - The rating to validate
+ * @returns {boolean} - True if valid rating
+ */
+export const isValidRating = (rating) => {
+  const numRating = parseFloat(rating);
+  return !isNaN(numRating) && numRating >= 1 && numRating <= 5;
 };
 
-// Validate search term
-export const validateSearchTerm = (term) => {
-  if (!term || typeof term !== 'string') return false;
-  return term.trim().length >= 1;
+/**
+ * Validates if a value is not empty
+ * @param {any} value - The value to validate
+ * @returns {boolean} - True if not empty
+ */
+export const isNotEmpty = (value) => {
+  if (value === null || value === undefined) return false;
+  if (typeof value === 'string') return value.trim().length > 0;
+  if (Array.isArray(value)) return value.length > 0;
+  if (typeof value === 'object') return Object.keys(value).length > 0;
+  return true;
 };
 
-// Validate rating filter
-export const validateRatingFilter = (filter) => {
-  const validFilters = ['all', '1', '2', '3', '4', '5'];
-  return validFilters.includes(filter);
+/**
+ * Validates if a value is a valid date
+ * @param {any} date - The date to validate
+ * @returns {boolean} - True if valid date
+ */
+export const isValidDate = (date) => {
+  if (!date) return false;
+  const dateObj = new Date(date);
+  return !isNaN(dateObj.getTime());
 };

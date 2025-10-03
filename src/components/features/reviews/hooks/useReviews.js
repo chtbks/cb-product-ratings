@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { dataService } from '../services';
+import { dataService } from '../../../../services';
 
 export const useReviews = () => {
   const [ratings, setRatings] = useState([]);

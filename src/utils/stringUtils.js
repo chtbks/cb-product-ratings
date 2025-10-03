@@ -1,38 +1,59 @@
-// String utility functions
-export const truncateText = (text, maxLength = 100) => {
-  if (!text || typeof text !== 'string') return '';
-  if (text.length <= maxLength) return text;
-  return text.substring(0, maxLength).trim() + '...';
-};
+/**
+ * Utility functions for string manipulation and formatting
+ */
 
-export const capitalizeFirst = (str) => {
-  if (!str || typeof str !== 'string') return '';
+/**
+ * Capitalizes the first letter of a string
+ * @param {string} str - The string to capitalize
+ * @returns {string} - Capitalized string
+ */
+export const capitalize = (str) => {
+  if (!str || typeof str !== 'string') return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-export const sanitizeHtml = (str) => {
-  if (!str || typeof str !== 'string') return '';
+/**
+ * Truncates a string to a specified length with ellipsis
+ * @param {string} str - The string to truncate
+ * @param {number} maxLength - Maximum length
+ * @returns {string} - Truncated string
+ */
+export const truncate = (str, maxLength = 100) => {
+  if (!str || str.length <= maxLength) return str;
+  return str.slice(0, maxLength) + '...';
+};
+
+/**
+ * Removes HTML tags from a string
+ * @param {string} htmlString - The HTML string
+ * @returns {string} - Plain text string
+ */
+export const stripHtml = (htmlString) => {
+  if (!htmlString) return '';
+  return htmlString.replace(/<[^>]*>/g, '');
+};
+
+/**
+ * Converts a string to a URL-friendly slug
+ * @param {string} str - The string to convert
+ * @returns {string} - URL-friendly slug
+ */
+export const slugify = (str) => {
+  if (!str) return '';
   return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;');
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim('-');
 };
 
-export const highlightSearch = (text, searchTerm) => {
-  if (!text || !searchTerm) return text;
-  
-  const regex = new RegExp(`(${searchTerm})`, 'gi');
-  return text.replace(regex, '<mark>$1</mark>');
-};
-
-export const extractInitials = (name) => {
-  if (!name || typeof name !== 'string') return '';
-  return name
-    .split(' ')
-    .map(word => word.charAt(0))
-    .join('')
-    .toUpperCase()
-    .substring(0, 2);
+/**
+ * Formats a number with commas
+ * @param {number} num - The number to format
+ * @returns {string} - Formatted number string
+ */
+export const formatNumber = (num) => {
+  if (typeof num !== 'number') return num;
+  return num.toLocaleString();
 };
