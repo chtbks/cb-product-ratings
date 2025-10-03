@@ -1,15 +1,21 @@
-version: '3.8'
-
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
+      # Mount the entire project directory for live reloading
       - .:/app
+      # Exclude node_modules to prevent conflicts
       - /app/node_modules
+      # Mount src directory specifically for component changes
+      - ./src:/app/src
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - FAST_REFRESH=true
     stdin_open: true
     tty: true
 
