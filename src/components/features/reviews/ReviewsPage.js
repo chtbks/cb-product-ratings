@@ -1,16 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  AnalyticsSection, 
   SearchFilter, 
-  ReviewCard, 
-  Pagination 
+  ReviewCard,
+  useReviews
 } from './index';
 
-import { 
-  useReviews, 
-  useAnalytics, 
-  usePagination 
-} from '../hooks';
+import { AnalyticsSection, useAnalytics } from '../analytics';
+import { Pagination } from '../../ui';
+import { usePagination } from '../../../hooks';
 
 // Main reviews page component with all functionality
 const ReviewsPage = () => {

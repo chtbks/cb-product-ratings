@@ -1,6 +1,7 @@
 import React from 'react';
-import StarRating from './StarRating';
-import { formatDate, hasVerifiedPurchase } from '../utils';
+import StarRating from '../../ui/StarRating';
+import { formatDate, hasVerifiedPurchase } from '../../../utils';
+import './ReviewCard.css';
 
 const ReviewCard = ({ review }) => {
   return (

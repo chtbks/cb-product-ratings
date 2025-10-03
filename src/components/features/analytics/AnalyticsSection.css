@@ -1,0 +1,203 @@
+/* AnalyticsSection Component Styles - Exact replication from App.css */
+.custom-reviews-summary {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 30px 0;
+  border: 1px solid #e3e3e3;
+}
+
+.custom-reviews-summary-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.custom-reviews-summary-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-reviews-summary-score {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333333; /* Dark gray like the site */
+  line-height: 1;
+}
+
+.custom-reviews-summary-stars {
+  display: flex;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.custom-reviews-summary-count {
+  color: #666666; /* Medium gray like the site */
+  font-size: 0.9rem;
+}
+
+.custom-distribution-tooltip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  min-width: 280px;
+  z-index: 1000;
+  font-size: 0.9rem;
+}
+
+.custom-tooltip-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.custom-tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.custom-tooltip-rating {
+  width: 50px;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left;
+}
+
+.custom-tooltip-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.custom-tooltip-fill {
+  height: 100%;
+  background-color: #ffc107;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.custom-tooltip-percentage {
+  width: 35px;
+  font-size: 0.8rem;
+  color: #333;
+  text-align: right;
+  font-weight: 500;
+}
+
+.custom-analytics-section-container {
+  width: 100%;
+  height: 100px; /* Unified height control */
+  display: flex;
+  align-items: center;
+}
+
+.custom-analytics-inline-container {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+  align-items: center; /* Changed from flex-start to center */
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%; /* Inherit parent height */
+}
+
+.custom-recommend-analytics-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-width: 200px;
+  height: 100%; /* Inherit from parent container */
+  box-sizing: border-box;
+}
+
+.custom-recommend-percentage-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.custom-recommend-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.custom-recommend-percentage-inline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #24B69A;
+  line-height: 1;
+}
+
+.custom-recommend-label-inline {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.custom-recommend-count-inline {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.custom-purchase-again-analytics-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-width: 200px;
+  height: 100%; /* Inherit from parent container */
+  box-sizing: border-box;
+}
+
+.custom-purchase-again-percentage-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.custom-purchase-again-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.custom-purchase-again-percentage-inline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #24B69A;
+  line-height: 1;
+}
+
+.custom-purchase-again-label-inline {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.custom-purchase-again-count-inline {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.2;
+}

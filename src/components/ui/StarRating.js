@@ -1,4 +1,5 @@
 import React from 'react';
+import './StarRating.css';
 
 const StarRating = ({ rating, size = 'default' }) => {
   const renderStars = () => {

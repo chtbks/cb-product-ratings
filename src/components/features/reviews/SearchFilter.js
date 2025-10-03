@@ -1,5 +1,6 @@
 import React from 'react';
-import StarRating from './StarRating';
+import StarRating from '../../ui/StarRating';
+import './SearchFilter.css';
 
 const SearchFilter = ({ 
   searchTerm, 
